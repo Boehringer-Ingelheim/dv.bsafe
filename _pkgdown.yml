@@ -1,0 +1,14 @@
+url: https://github.com/Boehringer-Ingelheim/dv.bsafe
+template:
+  bootstrap: 5
+
+navbar:
+  structure:
+    left:  [intro, articles, reference, news]
+    right: [search, github]
+
+articles:
+- title: Get started
+  navbar: ~
+  contents:
+  - Testing_Strategy
