@@ -111,9 +111,9 @@ ae_summary_table <-
       # for the log
       print(paste0("Comparison ", group, " started at ", Sys.time()))
 
-      trt_arm <- input_data %>% dplyr::filter(ARM == cb_list_trt[[group]])
+      trt_arm <- input_data |> dplyr::filter(ARM == cb_list_trt[[group]])
       ID_trt_list[[group]] <- unique(trt_arm$STUDYID)
-      ctr_arm <- input_data %>% dplyr::filter(ARM == cb_list_ctrl[[group]])
+      ctr_arm <- input_data |> dplyr::filter(ARM == cb_list_ctrl[[group]])
       ID_ctr_list[[group]] <- unique(ctr_arm$STUDYID)
 
       # nolint end
@@ -144,12 +144,12 @@ ae_summary_table <-
           ae_summary = TRUE
         )
 
-        hist_trt_trials <- trt_trials %>% dplyr::filter(HIST == 1)
-        hist_ctr_trials <- ctr_trials %>% dplyr::filter(HIST == 1)
+        hist_trt_trials <- trt_trials |> dplyr::filter(HIST == 1)
+        hist_ctr_trials <- ctr_trials |> dplyr::filter(HIST == 1)
 
 
-        trt_current_trial <- trt_trials %>% dplyr::filter(HIST == 0)
-        ctr_current_trial <- ctr_trials %>% dplyr::filter(HIST == 0)
+        trt_current_trial <- trt_trials |> dplyr::filter(HIST == 0)
+        ctr_current_trial <- ctr_trials |> dplyr::filter(HIST == 0)
 
         data_check_bin <- data_available(
           hist_trt = hist_trt_trials,
@@ -333,11 +333,11 @@ ae_summary_table <-
         )
 
 
-        hist_trt_trials <- trt_trials %>% dplyr::filter(HIST == 1)
-        hist_ctr_trials <- ctr_trials %>% dplyr::filter(HIST == 1)
+        hist_trt_trials <- trt_trials |> dplyr::filter(HIST == 1)
+        hist_ctr_trials <- ctr_trials |> dplyr::filter(HIST == 1)
 
-        trt_current_trial <- trt_trials %>% dplyr::filter(HIST == 0)
-        ctr_current_trial <- ctr_trials %>% dplyr::filter(HIST == 0)
+        trt_current_trial <- trt_trials |> dplyr::filter(HIST == 0)
+        ctr_current_trial <- ctr_trials |> dplyr::filter(HIST == 0)
 
         data_check_rate <- data_available(
           hist_trt = hist_trt_trials,

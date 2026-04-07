@@ -241,13 +241,13 @@ decision_making_density_plot <- function(
     saf_topic,
     select_btrt) {
   if (select_analysis == "Incidence proportion") {
-    stat_inf_dist_shade <- stat_inf_dist %>% dplyr::filter(Probability >= ae_prop[1] &
+    stat_inf_dist_shade <- stat_inf_dist |> dplyr::filter(Probability >= ae_prop[1] &
       Probability <= ae_prop[2])
 
     ggplot2::ggplot(stat_inf_dist, ggplot2::aes(x = Probability, y = Value)) +
       ggplot2::geom_line(linewidth = 1.65) +
       ggplot2::xlim(0, 1) +
-      ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
+      ggplot2::ylim(0, max(stat_inf_dist |> dplyr::select(Value))) +
       ggplot2::geom_area(
         data = stat_inf_dist_shade,
         ggplot2::aes(x = Probability, y = Value), fill = "salmon"
@@ -268,17 +268,17 @@ decision_making_density_plot <- function(
       ggplot2::theme(text = ggplot2::element_text(size = AXES_LABEL_SIZE))
   } else if (select_analysis == "Exposure-adjusted AE rate") {
     ae_prop <- ae_prop * 100 # for text display they are devided by 100 in the shiny package #nolint
-    stat_inf_dist_shade <- stat_inf_dist %>% dplyr::filter(Probability >= ae_prop[1] &
+    stat_inf_dist_shade <- stat_inf_dist |> dplyr::filter(Probability >= ae_prop[1] &
       Probability <= ae_prop[2])
 
 
     ggplot2::ggplot(stat_inf_dist, ggplot2::aes(x = Probability, y = Value)) +
       ggplot2::geom_line(linewidth = 1.65) +
       ggplot2::xlim(
-        min(stat_inf_dist %>% dplyr::select(Probability)),
-        max(stat_inf_dist %>% dplyr::select(Probability))
+        min(stat_inf_dist |> dplyr::select(Probability)),
+        max(stat_inf_dist |> dplyr::select(Probability))
       ) +
-      ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
+      ggplot2::ylim(0, max(stat_inf_dist |> dplyr::select(Value))) +
       ggplot2::geom_area(
         data = stat_inf_dist_shade,
         ggplot2::aes(x = Probability, y = Value), fill = "salmon"
@@ -344,7 +344,7 @@ app_plots <- function(
   ) +
     ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::xlim(0, 1) +
-    ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
+    ggplot2::ylim(0, max(stat_inf_dist |> dplyr::select(Value))) +
     ggplot2::geom_area(
       mapping = ggplot2::aes(x = ifelse(
         Probability >= RBesT::qmix(mix, 0.10, lower.tail = TRUE),
@@ -362,7 +362,7 @@ app_plots <- function(
   ) +
     ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::xlim(0, 1) +
-    ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
+    ggplot2::ylim(0, max(stat_inf_dist |> dplyr::select(Value))) +
     ggplot2::geom_area(
       mapping = ggplot2::aes(x = ifelse(Probability >= RBesT::qmix(mix, 0.05, lower.tail = TRUE), Probability, 0)), fill = "salmon"
     ) + # nolint
@@ -377,7 +377,7 @@ app_plots <- function(
   ) +
     ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::xlim(0, 1) +
-    ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
+    ggplot2::ylim(0, max(stat_inf_dist |> dplyr::select(Value))) +
     ggplot2::geom_area(
       mapping = ggplot2::aes(x = ifelse(Probability >= RBesT::qmix(mix, 0.01, lower.tail = TRUE), Probability, 0)), fill = "salmon"
     ) + # nolint

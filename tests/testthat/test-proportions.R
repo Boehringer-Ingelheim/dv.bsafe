@@ -24,7 +24,7 @@ test_that(
       }
       print(tp_prop$saf_topic)
       if (i > 1) {
-        data <- data %>%
+        data <- data |>
           dplyr::filter(HIST == 1)
         data <- data_table_prep(
           input_data = data,

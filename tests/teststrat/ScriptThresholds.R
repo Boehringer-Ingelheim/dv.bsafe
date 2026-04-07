@@ -22,7 +22,7 @@ path <- "testthat/scenarios"
 files_scenarios <- list.files(path, pattern = "*.csv")
 
 # Read all CSV files into a list
-scenarios_list <- files_scenarios %>%
+scenarios_list <- files_scenarios |>
   purrr::map(~ read.csv(file.path(path, .)))
 
 # Number of Scenarios
@@ -105,7 +105,7 @@ for (scen in c(1:13)) {
   # prepare the data
   # filter for historic information and correct group
   input_data <-
-    raw_data %>% dplyr::filter(HIST == 1 &
+    raw_data |> dplyr::filter(HIST == 1 &
       ARM == as.character(testing_list_props[[scen + 1]]$parameters["group"]))
 
   # define seed for seeds

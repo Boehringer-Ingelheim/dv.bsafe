@@ -55,7 +55,7 @@ model_summary_display <- function(map_object, select_analysis,
     } else {
       disp_mat_prop <- text_prop(stats_mat_prop = stats_mat_prop)
       disp_mat_prop$ESS <- round(ESS, 2)
-      disp_mat_prop %>%
+      disp_mat_prop |>
         dplyr::rename(Mean = mean, SD = sd, Median = median, "95% CrI" = cri)
     }
   } else if (select_analysis == "Exposure-adjusted AE rate") {
@@ -84,7 +84,7 @@ model_summary_display <- function(map_object, select_analysis,
 
       disp_mat_rate$ESS <- c(round(ESS, 2), "Not applicable.")
 
-      disp_mat_rate %>%
+      disp_mat_rate |>
         dplyr::rename(Mean = mean, SD = sd, Median = median, "95% CrI" = cri)
     }
   }
@@ -135,7 +135,7 @@ summary_stats_robust_map_prior_display <- function(
     } else {
       disp_mat_prop <- text_prop(stats_mat_prop = stats_mat_prop)
       disp_mat_prop$ESS <- round(c(ESS_MAP, ESS_ROB), 2)
-      disp_mat_prop %>%
+      disp_mat_prop |>
         dplyr::rename(Mean = mean, SD = sd, Median = median, "95% CrI" = cri)
     }
   } else if (select_analysis == "Exposure-adjusted AE rate") {
@@ -176,7 +176,7 @@ summary_stats_robust_map_prior_display <- function(
         round(c(ESS_MAP, ESS_ROB), 2), "Not applicable.", "Not applicable."
       )
 
-      disp_mat_rate %>%
+      disp_mat_rate |>
         dplyr::rename(Mean = mean, SD = sd, Median = median, "95% CrI" = cri)
     }
   }
@@ -246,7 +246,7 @@ summary_stat_all_display <- function(
     } else {
       disp_mat_prop <- text_prop(stats_mat_prop = stats_mat_prop)
       disp_mat_prop$ESS <- c(round(ESS_ROB, 2), "Not applicable.", "Not applicable.")
-      disp_mat_prop %>%
+      disp_mat_prop |>
         dplyr::rename(Mean = mean, SD = sd, Median = median, "95% CrI" = cri)
     }
   } else if (select_analysis == "Exposure-adjusted AE rate") {
@@ -297,7 +297,7 @@ summary_stat_all_display <- function(
         "Not applicable.", "Not applicable.", "Not applicable."
       )
 
-      disp_mat_rate %>%
+      disp_mat_rate |>
         dplyr::rename(Mean = mean, SD = sd, Median = median, "95% CrI" = cri)
     }
   }

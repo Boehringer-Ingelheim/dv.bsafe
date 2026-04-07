@@ -5,19 +5,19 @@ test_that("test-ae_summary_table_helpers.R works as expected", {
   saf_topic <- "Scen07"
   seed <- 8888
 
-  hist_trt_trials <- data %>%
-    dplyr::filter(ARM == cb_list_trt) %>%
+  hist_trt_trials <- data |>
+    dplyr::filter(ARM == cb_list_trt) |>
     dplyr::filter(HIST == 1)
-  hist_ctr_trials <- data %>%
-    dplyr::filter(ARM == cb_list_ctrl) %>%
+  hist_ctr_trials <- data |>
+    dplyr::filter(ARM == cb_list_ctrl) |>
     dplyr::filter(HIST == 0)
 
 
-  trt_current_trial <- data %>%
-    dplyr::filter(ARM == cb_list_trt) %>%
+  trt_current_trial <- data |>
+    dplyr::filter(ARM == cb_list_trt) |>
     dplyr::filter(HIST == 1)
-  ctr_current_trial <- data %>%
-    dplyr::filter(ARM == cb_list_ctrl) %>%
+  ctr_current_trial <- data |>
+    dplyr::filter(ARM == cb_list_ctrl) |>
     dplyr::filter(HIST == 0)
 
   trt_trials <- data_table_prep(

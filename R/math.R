@@ -115,7 +115,7 @@ map_prior_func <-
            testing = FALSE,
            ae_summary = FALSE) {
     if (ae_summary) {
-      input_data <- input_data %>% dplyr::filter(HIST == 1)
+      input_data <- input_data |> dplyr::filter(HIST == 1)
     }
 
     if (testing == FALSE) {
