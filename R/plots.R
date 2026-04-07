@@ -12,7 +12,7 @@ AXES_LABEL_SIZE <- 16
 robust_map_prior_plot <- function(rob_comp, saf_topic, select_btrt, select_analysis) {
   # Plot densities
   p <- ggplot2::ggplot(rob_comp, ggplot2::aes(x = Probability, y = Value, color = Density, linetype = Density)) +
-    ggplot2::geom_line(size = 1.65) +
+    ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::scale_linetype_manual(values = c("dotted", "dashed")) +
     ggplot2::theme_minimal() +
     ggplot2::scale_x_continuous(labels = function(x) formatC(x, digits = 1, format = "f")) +
@@ -95,7 +95,7 @@ param_mix_density_display <- function(param_approx, select_analysis, saf_topic, 
   )
   # Plot density
   p <- ggplot2::ggplot(df, ggplot2::aes(x = Probability, y = Value)) +
-    ggplot2::geom_line(size = 1.65) +
+    ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.text = ggplot2::element_text(size = AXES_LABEL_SIZE)) +
     ggplot2::theme(text = ggplot2::element_text(size = AXES_LABEL_SIZE))
@@ -187,7 +187,7 @@ nta_data_conflict_assassment_plot <- function(
       x = Probability, y = Value, color = Density, linetype = Density
     )
   ) +
-    ggplot2::geom_line(size = 1.65) +
+    ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::scale_linetype_manual(values = c("dotted", "dashed", "dotdash")) +
     ggplot2::theme_minimal() +
     ggplot2::theme(axis.text = ggplot2::element_text(size = AXES_LABEL_SIZE)) +
@@ -245,7 +245,7 @@ decision_making_density_plot <- function(
       Probability <= ae_prop[2])
 
     ggplot2::ggplot(stat_inf_dist, ggplot2::aes(x = Probability, y = Value)) +
-      ggplot2::geom_line(size = 1.65) +
+      ggplot2::geom_line(linewidth = 1.65) +
       ggplot2::xlim(0, 1) +
       ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
       ggplot2::geom_area(
@@ -273,7 +273,7 @@ decision_making_density_plot <- function(
 
 
     ggplot2::ggplot(stat_inf_dist, ggplot2::aes(x = Probability, y = Value)) +
-      ggplot2::geom_line(size = 1.65) +
+      ggplot2::geom_line(linewidth = 1.65) +
       ggplot2::xlim(
         min(stat_inf_dist %>% dplyr::select(Probability)),
         max(stat_inf_dist %>% dplyr::select(Probability))
@@ -328,7 +328,7 @@ app_plots <- function(
       x = Probability, y = Value, color = Density, linetype = Density
     )
   ) +
-    ggplot2::geom_line(size = 1.65) +
+    ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::labs(
       x = paste0(
         "Proportion of Patients with ", saf_topic, " with treatment ",
@@ -342,7 +342,7 @@ app_plots <- function(
   print(ggplot2::ggplot(
     stat_inf_dist, ggplot2::aes(x = Probability, y = Value)
   ) +
-    ggplot2::geom_line(size = 1.65) +
+    ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::xlim(0, 1) +
     ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
     ggplot2::geom_area(
@@ -360,7 +360,7 @@ app_plots <- function(
   print(ggplot2::ggplot(
     stat_inf_dist, ggplot2::aes(x = Probability, y = Value)
   ) +
-    ggplot2::geom_line(size = 1.65) +
+    ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::xlim(0, 1) +
     ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
     ggplot2::geom_area(
@@ -375,7 +375,7 @@ app_plots <- function(
   print(ggplot2::ggplot(
     stat_inf_dist, ggplot2::aes(x = Probability, y = Value)
   ) +
-    ggplot2::geom_line(size = 1.65) +
+    ggplot2::geom_line(linewidth = 1.65) +
     ggplot2::xlim(0, 1) +
     ggplot2::ylim(0, max(stat_inf_dist %>% dplyr::select(Value))) +
     ggplot2::geom_area(
