@@ -1,14 +1,24 @@
 url: https://github.com/Boehringer-Ingelheim/dv.bsafe
 template:
   bootstrap: 5
-
+  
 navbar:
+  type: inverted
   structure:
-    left:  [intro, articles, reference, news]
+    left: [intro, reference, articles, tutorials, news, qc]
     right: [search, github]
+  components:
+    qc:
+      text: Quality Control
+      href: articles/qc.html  
 
 articles:
 - title: Get started
   navbar: ~
   contents:
   - Testing_Strategy
+
+- title: Quality Control
+  desc: Quality Control
+  contents:
+  - qc
